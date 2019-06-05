@@ -1,0 +1,13 @@
+Connect-SPOService
+Connect-SPOService -Url "https://demodocsnode-admin.sharepoint.com"
+Register-SPOHubSite -Site "https://demodocsnode.sharepoint.com/sites/spc"
+
+Get-Content C:\SPC\Scripts\projectscript.json -Raw | Add-SpoSiteScript -Title "Project"
+
+Add-SPOSiteDesign -Title "Project Site" -WebTemplate 64 -SiteScripts "623176b6-d88c-4119-9dc6-e4baea17e18e" -Description "Design to apply different artifacts to the design"
+
+Get-SPOSiteDesign
+Get-SPOSiteScript
+
+
+Connect-SPOService -Url "https://docsnode-admin.sharepoint.com"
