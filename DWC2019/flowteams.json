@@ -1,0 +1,17 @@
+{
+    "$schema": "schema.json",
+    "actions": [
+        {
+            "verb": "triggerFlow",
+            "url": "https://prod-89.westeurope.logic.azure.com:443/workflows/97d9b17614ab40c38739de065ef9f59c/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=vcwZ8shotT90MJ15jaL5Ocn2BDcfM1S7LoGfMb0eQgI",
+            "name": "Team site + Teams", 
+            "parameters": 
+            { 
+               "event": "Microsoft Event", 
+               "product": "SharePoint" 
+            }
+        }
+    ], 
+    "bindata": { }, 
+    "version": 1
+};

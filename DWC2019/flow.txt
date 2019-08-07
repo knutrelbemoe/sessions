@@ -1,0 +1,4 @@
+formatDateTime(triggerBody()['text'],'yyyy-dd-MM')
+
+Thank you for your email, however I'm currently out of the office, enjoying some nice time at the beach! So contact one of my collegues instead
+

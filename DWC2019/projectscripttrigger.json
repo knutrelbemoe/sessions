@@ -1,0 +1,90 @@
+{
+  "$schema": "schema.json",
+  "actions": [
+    {
+      "verb": "createSiteColumn",
+      "fieldType": "Text",
+      "internalName": "ProjectName",
+      "displayName": "Project Name",
+      "isRequired": true,
+      "group": "~Project Columns"
+    },
+    {
+      "verb": "createSiteColumnXml",
+      "schemaXml": "<Field Type=\"Choice\" DisplayName=\"Document Type\" Required=\"FALSE\" Format=\"Dropdown\" StaticName=\"DocumentType\" Name=\"DocumentType\"><Default>General Doc</Default><CHOICES><CHOICE>General Doc</CHOICE><CHOICE>Requirements</CHOICE><CHOICE>Sales</CHOICE><CHOICE>Contracts</CHOICE></CHOICES></Field>",
+      "group": "~Project Columns"
+    },
+    {
+      "verb": "createContentType",
+      "name": "Project Document",
+      "description": "Custom project document",
+      "parentName": "Document",
+      "hidden": false,
+      "subactions":
+          [
+              {
+                  "verb": "addSiteColumn",
+                  "internalName": "ProjectName"
+              },
+              {
+                  "verb": "addSiteColumn",
+                  "internalName": "DocumentType"
+                  }
+          ]
+    },
+    {
+      "verb": "createSPList",
+      "listName": "Project Documents",
+      "templateType": 101,
+      "subactions": [
+        {
+          "verb": "SetDescription",
+          "description": "Project Document library"
+        },
+        {
+          "verb": "addContentType",
+          "name": "Project Document"
+        },
+        {
+          "verb": "removeContentType",
+          "name": "Document"
+        }
+      ]
+    },
+    {
+     "verb": "addNavLink",
+     "url": "/Project Documents",
+     "displayName": "Project Documents",
+     "isWebRelative": true
+    },
+    {
+       "verb": "removeNavLink",
+       "displayName": "Documents",
+       "isWebRelative": true
+     },
+    {
+       "verb": "removeNavLink",
+       "displayName": "Pages",
+       "isWebRelative": true
+     },
+    {
+       "verb": "removeNavLink",
+       "displayName": "Site contents",
+       "isWebRelative": true
+     },
+    {
+    "verb": "joinHubSite",
+    "hubSiteId": "3ed433fe-505b-44ba-b79e-b988109ea56a"
+    },
+    {
+    "verb": "triggerFlow",
+             "url": "https://prod-35.westeurope.logic.azure.com:443/workflows/9b6db195ed034147a4a4608814677289/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rf6EAjnzlhRCbPWQLLLYTG4HPlpj1zIXDvp4LHuyNms",
+             "name": "Record site creation event",
+             "parameters": {
+                 "event":"site creation",
+                 "product":"SharePoint Online"
+             }
+            }
+  ],
+  "version": 1
+}
